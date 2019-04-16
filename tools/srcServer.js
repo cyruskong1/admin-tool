@@ -13,7 +13,6 @@ const compiler = webpack(config);
 // start configuring express
 app.use(
   require("webpack-dev-middleware")(compiler, {
-    noInfo: true, // set to true so we don't get extra information when the server runs
     publicPath: config.output.publicPath
   })
 );
@@ -27,7 +26,7 @@ app.get("*", (req, res) => {
 
 app.listen(port, err => {
   if (err) {
-    console.log("server error: ", error);
+    console.log("server error: ", err); // eslint-disable-line no-console
   } else {
     open(`http://localhost:${port}`);
   }
