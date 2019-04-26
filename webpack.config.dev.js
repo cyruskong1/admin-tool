@@ -25,8 +25,11 @@ export default {
     rules: [
       {
         test: /\.js$/,
+        exclude: /node_modules/,
         include: path.join(__dirname, "src"),
-        loaders: ["babel-loader"]
+        use: {
+          loader: "babel-loader"
+        }
       },
       { test: /(\.css)$/, loaders: ["style-loader", "css-loader"] },
       { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: "file" },
